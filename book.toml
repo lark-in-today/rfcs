@@ -1,0 +1,8 @@
+[book]
+authors = ["clearloop"]
+multilingual = false
+src = "src"
+title = "lark-in-RFCs"
+
+[build]
+build-dir = "docs"
