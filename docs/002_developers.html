@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>创作者 - lark-in-RFCs</title>
+        <title>开发者 - lark-in-RFCs</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="authors.html" class="active"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_authors.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="002_developers.html" class="active"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="003_advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -140,25 +140,71 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#创作者" id="创作者"><h1>创作者</h1></a>
-<p>创作者可通过 lark-in 编辑器进行内容编辑。</p>
-<a class="header" href="#lark-in-编辑器" id="lark-in-编辑器"><h2>lark-in 编辑器</h2></a>
-<p>用于编辑发布内容，<a href="">网页版</a>，<a href="">移动版</a>，<a href="">桌面版</a>。</p>
-<a class="header" href="#个人博客" id="个人博客"><h2>个人博客</h2></a>
-<p>举例如用户 x，用户 x 使用 <code>lark-in</code> 创作了一篇内容，那么用户 x 的博客地址为: <code>x.lark-in.blog</code>。</p>
+                        <a class="header" href="#002_开发者" id="002_开发者"><h1>002_开发者</h1></a>
+<a class="header" href="#lark-in-组件" id="lark-in-组件"><h2>Lark-in 组件</h2></a>
+<p>可以通过 <code>lark-in</code> 组件库将特定文章嵌入对应的 App 当中，以 <code>React</code> 为例：</p>
+<pre><code>yarn add lark-in
+</code></pre>
+<p>登录组件：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const Login = () =&gt; (
+    &lt;Login 
+        name=&quot;x&quot;
+    /&gt;
+);
+</code></pre>
+<p>展示文章：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const article = () =&gt; (
+    &lt;LarkIn.Article
+        no=&quot;0&quot;
+        author=&quot;x&quot;
+        developer=&quot;0x7424f0f51232e4c58c2ab1db849d128af303bda08fd4db8a084c884ad87a033d&quot;
+    /&gt;
+);
+</code></pre>
+<p>文章列表：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const articleList = () =&gt; (
+    &lt;LarkIn.ArticleList
+        author=&quot;x&quot;
+        range={[0, 10]}
+        developer=&quot;0x7424f0f51232e4c58c2ab1db849d128af303bda08fd4db8a084c884ad87a033d&quot;
+    /&gt;
+);
+</code></pre>
+<p>Lark-in 同时支持 React-Native, Flutter, Electron 等，<a href="">详细文档</a>。</p>
+<a class="header" href="#lark-in-api" id="lark-in-api"><h2>Lark-in API</h2></a>
+<p>Lark-in API 的 base url 为 <code>https://api.lark-in.xyz</code>。</p>
+<a class="header" href="#ident" id="ident"><h3><code>/{ident}</code></h3></a>
+<table><thead><tr><th align="left"> Method </th><th> Desc          </th><th> Params </th></tr></thead><tbody>
+<tr><td align="left"> GET    </td><td> 获取用户信息  </td><td> -      </td></tr>
+<tr><td align="left"> PUT    </td><td> 更新用户信息  </td><td> -      </td></tr>
+<tr><td align="left"> POST   </td><td> 发布/修改文章 </td><td> -      </td></tr>
+<tr><td align="left"> PATCH  </td><td> -             </td><td> -      </td></tr>
+<tr><td align="left"> OPTION </td><td> -             </td><td> -      </td></tr>
+</tbody></table>
+<a class="header" href="#identnumber" id="identnumber"><h3><code>/{ident}/{number}</code></h3></a>
+<table><thead><tr><th> Method </th><th> Desc     </th><th> Params </th></tr></thead><tbody>
+<tr><td> GET    </td><td> 获取文章 </td><td>        </td></tr>
+<tr><td> POST   </td><td> 修改文章 </td><td>        </td></tr>
+</tbody></table>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="abstract.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="001_authors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
                         
-                            <a rel="next" href="developers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next" href="003_advertisers.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         
@@ -170,13 +216,13 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="abstract.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="001_authors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="developers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a href="003_advertisers.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
