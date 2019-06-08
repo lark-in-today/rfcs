@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="creators.html" class="active"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="authors.html" class="active"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -184,6 +184,21 @@
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         

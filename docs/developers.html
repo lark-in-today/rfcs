@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="creators.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="developers.html" class="active"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="authors.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="developers.html" class="active"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -198,7 +198,7 @@ const articleList = () =&gt; (
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="creators.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="authors.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -216,7 +216,7 @@ const articleList = () =&gt; (
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="creators.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="authors.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
@@ -230,6 +230,21 @@ const articleList = () =&gt; (
 
         </div>
 
+        
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3001");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload(true); // force reload from server (not from cache)
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         
 
         
