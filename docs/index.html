@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_authors.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="002_developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="003_advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html"><strong aria-hidden="true">2.</strong> 验证系统</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -142,14 +142,71 @@
                     <main>
                         <a class="header" href="#000_摘要" id="000_摘要"><h1>000_摘要</h1></a>
 <p>lark-in 是一个开放式的内容创作平台，意在帮助内容创作者们进行不受限制地记录与表达。</p>
-<a class="header" href="#特色" id="特色"><h2>特色</h2></a>
-<a class="header" href="#博客系统" id="博客系统"><h4>博客系统</h4></a>
-<p>用户可以通过 <a href="">lark-in</a> 进行内容编辑，lark-in 将会为创作者生成独立的<a href="">个人博客</a>。</p>
-<a class="header" href="#版权系统" id="版权系统"><h4>版权系统</h4></a>
+<a class="header" href="#产品" id="产品"><h1>产品</h1></a>
+<a class="header" href="#lark-in-编辑器" id="lark-in-编辑器"><h3>Lark-in 编辑器</h3></a>
+<p>用于编辑发布内容，<a href="">网页版</a>，<a href="">移动版</a>，<a href="">桌面版</a>。</p>
+<a class="header" href="#特色" id="特色"><h1>特色</h1></a>
+<a class="header" href="#博客系统" id="博客系统"><h2>博客系统</h2></a>
+<p>用户可以通过 <a href="">lark-in</a> 编辑器进行内容编辑，lark-in 将会为创作者生成独立的<a href="">个人博客</a>。</p>
+<p>举例如用户 x，用户 x 使用 <code>lark-in</code> 创作了一篇内容，那么用户 x 的博客地址为: <code>x.lark-in.blog</code>。</p>
+<a class="header" href="#版权系统" id="版权系统"><h2>版权系统</h2></a>
 <p>通过 <code>lark-in</code> 发布并传播的内容，将会绑定上用户的身份标识，当创作者遭遇侵权问题时，可通过对应内容的哈希签名进行<a href="">维权</a>。</p>
-<a class="header" href="#广告系统" id="广告系统"><h4>广告系统</h4></a>
+<a class="header" href="#广告系统" id="广告系统"><h2>广告系统</h2></a>
 <p>用户可以选择为自己的内容插入适当的广告，广告的收益将按比例返还给 App 开发者与内容创作者, 具体的比例由内容创作者决定，详情请见<a href="">广告系统</a>。</p>
-<a class="header" href="#路线图" id="路线图"><h2>路线图</h2></a>
+<a class="header" href="#lark-in-组件" id="lark-in-组件"><h3>Lark-in 组件</h3></a>
+<p>可以通过 <code>lark-in</code> 组件库将特定文章嵌入对应的 App 当中，以 <code>React</code> 为例：</p>
+<pre><code>yarn add lark-in
+</code></pre>
+<p>登录组件：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const Login = () =&gt; (
+    &lt;Login 
+        name=&quot;x&quot;
+    /&gt;
+);
+</code></pre>
+<p>展示文章：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const article = () =&gt; (
+    &lt;LarkIn.Article
+        no=&quot;0&quot;
+        author=&quot;x&quot;
+        developer=&quot;0x7424f0f51232e4c58c2ab1db849d128af303bda08fd4db8a084c884ad87a033d&quot;
+    /&gt;
+);
+</code></pre>
+<p>文章列表：</p>
+<pre><code class="language-jsx">import LarkIn from 'lark-in';
+
+const articleList = () =&gt; (
+    &lt;LarkIn.ArticleList
+        author=&quot;x&quot;
+        range={[0, 10]}
+        developer=&quot;0x7424f0f51232e4c58c2ab1db849d128af303bda08fd4db8a084c884ad87a033d&quot;
+    /&gt;
+);
+</code></pre>
+<p>Lark-in 同时支持 React-Native, Flutter, Electron 等，<a href="">详细文档</a>。</p>
+<a class="header" href="#lark-in-api" id="lark-in-api"><h4>Lark-in API</h4></a>
+<blockquote>
+<p>Lark-in API 的 base url 为 <code>https://api.lark-in.xyz</code>。</p>
+</blockquote>
+<p><code>/{ident}</code>:</p>
+<table><thead><tr><th align="left"> Method </th><th> Desc          </th><th> Params </th></tr></thead><tbody>
+<tr><td align="left"> GET    </td><td> 获取用户信息  </td><td> -      </td></tr>
+<tr><td align="left"> PUT    </td><td> 更新用户信息  </td><td> -      </td></tr>
+<tr><td align="left"> POST   </td><td> 发布/修改文章 </td><td> -      </td></tr>
+<tr><td align="left"> PATCH  </td><td> -             </td><td> -      </td></tr>
+<tr><td align="left"> OPTION </td><td> -             </td><td> -      </td></tr>
+</tbody></table>
+<p><code>/{ident}/{number}</code>:</p>
+<table><thead><tr><th> Method </th><th> Desc     </th><th> Params </th></tr></thead><tbody>
+<tr><td> GET    </td><td> 获取文章 </td><td>        </td></tr>
+<tr><td> POST   </td><td> 修改文章 </td><td>        </td></tr>
+</tbody></table>
+<a class="header" href="#路线图" id="路线图"><h1>路线图</h1></a>
 <p>Lark-in 所涵盖的全部功能有 3 个部分，身份验证、内容制作、以及数据存储。</p>
 <a class="header" href="#stage-1" id="stage-1"><h4>Stage 1</h4></a>
 <p>在 <strong>服务端</strong> 完成登录验证、内容发布存储数据 CURD、信息验证系统。在 <strong>网页端</strong> 完成登录流程、内容(文章)编辑器、用户信息更新界面。</p>

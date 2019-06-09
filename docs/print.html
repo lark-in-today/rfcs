@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_authors.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="002_developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="003_advertisers.html"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html"><strong aria-hidden="true">2.</strong> 验证系统</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -142,31 +142,18 @@
                     <main>
                         <a class="header" href="#000_摘要" id="000_摘要"><h1>000_摘要</h1></a>
 <p>lark-in 是一个开放式的内容创作平台，意在帮助内容创作者们进行不受限制地记录与表达。</p>
-<a class="header" href="#特色" id="特色"><h2>特色</h2></a>
-<a class="header" href="#博客系统" id="博客系统"><h4>博客系统</h4></a>
-<p>用户可以通过 <a href="">lark-in</a> 进行内容编辑，lark-in 将会为创作者生成独立的<a href="">个人博客</a>。</p>
-<a class="header" href="#版权系统" id="版权系统"><h4>版权系统</h4></a>
-<p>通过 <code>lark-in</code> 发布并传播的内容，将会绑定上用户的身份标识，当创作者遭遇侵权问题时，可通过对应内容的哈希签名进行<a href="">维权</a>。</p>
-<a class="header" href="#广告系统" id="广告系统"><h4>广告系统</h4></a>
-<p>用户可以选择为自己的内容插入适当的广告，广告的收益将按比例返还给 App 开发者与内容创作者, 具体的比例由内容创作者决定，详情请见<a href="">广告系统</a>。</p>
-<a class="header" href="#路线图" id="路线图"><h2>路线图</h2></a>
-<p>Lark-in 所涵盖的全部功能有 3 个部分，身份验证、内容制作、以及数据存储。</p>
-<a class="header" href="#stage-1" id="stage-1"><h4>Stage 1</h4></a>
-<p>在 <strong>服务端</strong> 完成登录验证、内容发布存储数据 CURD、信息验证系统。在 <strong>网页端</strong> 完成登录流程、内容(文章)编辑器、用户信息更新界面。</p>
-<p>将产品推送给朋友请求意见，并进行相应优化，最后将网页版内容移植到移动版，进行测试上线，开始进入维护期。</p>
-<a class="header" href="#stage-2" id="stage-2"><h4>Stage 2</h4></a>
-<p>优化/简化并稳定服务端结构，制作 Desktop 版简易界面。</p>
-<p>用 RUST 重构服务端，将数据库从 <code>rethinkdb</code> 迁徙到 <code>sled</code>，制作分布式存储系统，包括 <code>StQL</code> 的制作，制定并实现出出稳定版，</p>
-<a class="header" href="#stage-3" id="stage-3"><h4>Stage 3</h4></a>
-<p>将项目(身份验证、内容制作，数据存储)稳定化，对广告系统进行探索，脱离编辑器的限制，开始着手准备社交媒体。</p>
-<a class="header" href="#001_创作者" id="001_创作者"><h1>001_创作者</h1></a>
-<p>创作者可通过 lark-in 编辑器进行内容编辑。</p>
-<a class="header" href="#lark-in-编辑器" id="lark-in-编辑器"><h2>lark-in 编辑器</h2></a>
+<a class="header" href="#产品" id="产品"><h1>产品</h1></a>
+<a class="header" href="#lark-in-编辑器" id="lark-in-编辑器"><h3>Lark-in 编辑器</h3></a>
 <p>用于编辑发布内容，<a href="">网页版</a>，<a href="">移动版</a>，<a href="">桌面版</a>。</p>
-<a class="header" href="#个人博客" id="个人博客"><h2>个人博客</h2></a>
+<a class="header" href="#特色" id="特色"><h1>特色</h1></a>
+<a class="header" href="#博客系统" id="博客系统"><h2>博客系统</h2></a>
+<p>用户可以通过 <a href="">lark-in</a> 编辑器进行内容编辑，lark-in 将会为创作者生成独立的<a href="">个人博客</a>。</p>
 <p>举例如用户 x，用户 x 使用 <code>lark-in</code> 创作了一篇内容，那么用户 x 的博客地址为: <code>x.lark-in.blog</code>。</p>
-<a class="header" href="#002_开发者" id="002_开发者"><h1>002_开发者</h1></a>
-<a class="header" href="#lark-in-组件" id="lark-in-组件"><h2>Lark-in 组件</h2></a>
+<a class="header" href="#版权系统" id="版权系统"><h2>版权系统</h2></a>
+<p>通过 <code>lark-in</code> 发布并传播的内容，将会绑定上用户的身份标识，当创作者遭遇侵权问题时，可通过对应内容的哈希签名进行<a href="">维权</a>。</p>
+<a class="header" href="#广告系统" id="广告系统"><h2>广告系统</h2></a>
+<p>用户可以选择为自己的内容插入适当的广告，广告的收益将按比例返还给 App 开发者与内容创作者, 具体的比例由内容创作者决定，详情请见<a href="">广告系统</a>。</p>
+<a class="header" href="#lark-in-组件" id="lark-in-组件"><h3>Lark-in 组件</h3></a>
 <p>可以通过 <code>lark-in</code> 组件库将特定文章嵌入对应的 App 当中，以 <code>React</code> 为例：</p>
 <pre><code>yarn add lark-in
 </code></pre>
@@ -202,9 +189,11 @@ const articleList = () =&gt; (
 );
 </code></pre>
 <p>Lark-in 同时支持 React-Native, Flutter, Electron 等，<a href="">详细文档</a>。</p>
-<a class="header" href="#lark-in-api" id="lark-in-api"><h2>Lark-in API</h2></a>
+<a class="header" href="#lark-in-api" id="lark-in-api"><h4>Lark-in API</h4></a>
+<blockquote>
 <p>Lark-in API 的 base url 为 <code>https://api.lark-in.xyz</code>。</p>
-<a class="header" href="#ident" id="ident"><h3><code>/{ident}</code></h3></a>
+</blockquote>
+<p><code>/{ident}</code>:</p>
 <table><thead><tr><th align="left"> Method </th><th> Desc          </th><th> Params </th></tr></thead><tbody>
 <tr><td align="left"> GET    </td><td> 获取用户信息  </td><td> -      </td></tr>
 <tr><td align="left"> PUT    </td><td> 更新用户信息  </td><td> -      </td></tr>
@@ -212,13 +201,62 @@ const articleList = () =&gt; (
 <tr><td align="left"> PATCH  </td><td> -             </td><td> -      </td></tr>
 <tr><td align="left"> OPTION </td><td> -             </td><td> -      </td></tr>
 </tbody></table>
-<a class="header" href="#identnumber" id="identnumber"><h3><code>/{ident}/{number}</code></h3></a>
+<p><code>/{ident}/{number}</code>:</p>
 <table><thead><tr><th> Method </th><th> Desc     </th><th> Params </th></tr></thead><tbody>
 <tr><td> GET    </td><td> 获取文章 </td><td>        </td></tr>
 <tr><td> POST   </td><td> 修改文章 </td><td>        </td></tr>
 </tbody></table>
-<a class="header" href="#003_广告提供商" id="003_广告提供商"><h1>003_广告提供商</h1></a>
-<p>产品上线前无法作估计。</p>
+<a class="header" href="#路线图" id="路线图"><h1>路线图</h1></a>
+<p>Lark-in 所涵盖的全部功能有 3 个部分，身份验证、内容制作、以及数据存储。</p>
+<a class="header" href="#stage-1" id="stage-1"><h4>Stage 1</h4></a>
+<p>在 <strong>服务端</strong> 完成登录验证、内容发布存储数据 CURD、信息验证系统。在 <strong>网页端</strong> 完成登录流程、内容(文章)编辑器、用户信息更新界面。</p>
+<p>将产品推送给朋友请求意见，并进行相应优化，最后将网页版内容移植到移动版，进行测试上线，开始进入维护期。</p>
+<a class="header" href="#stage-2" id="stage-2"><h4>Stage 2</h4></a>
+<p>优化/简化并稳定服务端结构，制作 Desktop 版简易界面。</p>
+<p>用 RUST 重构服务端，将数据库从 <code>rethinkdb</code> 迁徙到 <code>sled</code>，制作分布式存储系统，包括 <code>StQL</code> 的制作，制定并实现出出稳定版，</p>
+<a class="header" href="#stage-3" id="stage-3"><h4>Stage 3</h4></a>
+<p>将项目(身份验证、内容制作，数据存储)稳定化，对广告系统进行探索，脱离编辑器的限制，开始着手准备社交媒体。</p>
+<a class="header" href="#01_auth_system" id="01_auth_system"><h1>01_auth_system</h1></a>
+<a class="header" href="#request-table" id="request-table"><h2>Request Table</h2></a>
+<table><thead><tr><th> Type    </th><th> Code </th><th> Message                          </th></tr></thead><tbody>
+<tr><td> OK      </td><td> 000  </td><td> Created Token.                   </td></tr>
+<tr><td> ERROR   </td><td> 000  </td><td> No Public Key in Request Header. </td></tr>
+<tr><td> WARNING </td><td> 000  </td><td> Generating Token...              </td></tr>
+</tbody></table>
+<a class="header" href="#auth-system" id="auth-system"><h2>Auth System</h2></a>
+<pre><code class="language-sequence">title: Auth
+Client --&gt;&gt; Server: public-key-header: pk
+Server --&gt;&gt; Client: token
+Client --&gt;  Server: headers: signed-token-header, public-key-header
+Server --&gt;  Client: saved {public_key: signed_token}
+Client -&gt;   Server: normal request
+</code></pre>
+<a class="header" href="#摘要" id="摘要"><h2>摘要</h2></a>
+<ol>
+<li>客户端的请求头中必须存在 <strong>公钥</strong>(ed25519)
+<ol>
+<li><code>public-key-header: your_public_key</code></li>
+<li>若没有公钥，则会 <strong>请求失败</strong>。</li>
+</ol>
+</li>
+<li>首次求请求后，服务器返回一个 token</li>
+<li>客户端使用 <strong>私钥</strong> 对 token 进行签名，将 <code>token</code> 与 签名后的 <code>signed_token</code> 加入请求头。
+<ol>
+<li><code>token-header: your_token</code></li>
+<li><code>signed-token-header: your_signed_token</code></li>
+</ol>
+</li>
+<li>以上流程(2 次请求)完成后，则可根据记录的身份任意请求。</li>
+</ol>
+<p>标准的 headers 如下：</p>
+<pre><code class="language-json">headers: { 
+    &quot;Accept&quot;: &quot;application/json, text/plain, */*&quot;,
+    &quot;public-key-header&quot;: &quot;py+qzXgPUdfNipn2QF+yGBDvRsMeLOeG95+K6zMIL/E=&quot;,
+    &quot;token-header&quot;: &quot;&quot;,
+    &quot;signed-token-header&quot;: &quot;&quot;,
+    &quot;User-Agent&quot;: &quot;axios/0.19.0&quot; 
+}
+</code></pre>
 
                     </main>
 

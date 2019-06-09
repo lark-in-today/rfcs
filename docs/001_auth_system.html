@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>广告提供商 - lark-in-RFCs</title>
+        <title>验证系统 - lark-in-RFCs</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_authors.html"><strong aria-hidden="true">2.</strong> 创作者</a></li><li><a href="002_developers.html"><strong aria-hidden="true">3.</strong> 开发者</a></li><li><a href="003_advertisers.html" class="active"><strong aria-hidden="true">4.</strong> 广告提供商</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html" class="active"><strong aria-hidden="true">2.</strong> 验证系统</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -140,15 +140,54 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#003_广告提供商" id="003_广告提供商"><h1>003_广告提供商</h1></a>
-<p>产品上线前无法作估计。</p>
+                        <a class="header" href="#01_auth_system" id="01_auth_system"><h1>01_auth_system</h1></a>
+<a class="header" href="#request-table" id="request-table"><h2>Request Table</h2></a>
+<table><thead><tr><th> Type    </th><th> Code </th><th> Message                          </th></tr></thead><tbody>
+<tr><td> OK      </td><td> 000  </td><td> Created Token.                   </td></tr>
+<tr><td> ERROR   </td><td> 000  </td><td> No Public Key in Request Header. </td></tr>
+<tr><td> WARNING </td><td> 000  </td><td> Generating Token...              </td></tr>
+</tbody></table>
+<a class="header" href="#auth-system" id="auth-system"><h2>Auth System</h2></a>
+<pre><code class="language-sequence">title: Auth
+Client --&gt;&gt; Server: public-key-header: pk
+Server --&gt;&gt; Client: token
+Client --&gt;  Server: headers: signed-token-header, public-key-header
+Server --&gt;  Client: saved {public_key: signed_token}
+Client -&gt;   Server: normal request
+</code></pre>
+<a class="header" href="#摘要" id="摘要"><h2>摘要</h2></a>
+<ol>
+<li>客户端的请求头中必须存在 <strong>公钥</strong>(ed25519)
+<ol>
+<li><code>public-key-header: your_public_key</code></li>
+<li>若没有公钥，则会 <strong>请求失败</strong>。</li>
+</ol>
+</li>
+<li>首次求请求后，服务器返回一个 token</li>
+<li>客户端使用 <strong>私钥</strong> 对 token 进行签名，将 <code>token</code> 与 签名后的 <code>signed_token</code> 加入请求头。
+<ol>
+<li><code>token-header: your_token</code></li>
+<li><code>signed-token-header: your_signed_token</code></li>
+</ol>
+</li>
+<li>以上流程(2 次请求)完成后，则可根据记录的身份任意请求。</li>
+</ol>
+<p>标准的 headers 如下：</p>
+<pre><code class="language-json">headers: { 
+    &quot;Accept&quot;: &quot;application/json, text/plain, */*&quot;,
+    &quot;public-key-header&quot;: &quot;py+qzXgPUdfNipn2QF+yGBDvRsMeLOeG95+K6zMIL/E=&quot;,
+    &quot;token-header&quot;: &quot;&quot;,
+    &quot;signed-token-header&quot;: &quot;&quot;,
+    &quot;User-Agent&quot;: &quot;axios/0.19.0&quot; 
+}
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="002_developers.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="000_abstract.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
@@ -162,7 +201,7 @@
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="002_developers.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="000_abstract.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
