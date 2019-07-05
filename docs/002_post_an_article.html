@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>验证系统 - lark-in-RFCs</title>
+        <title>发布文章 - lark-in-RFCs</title>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html" class="active"><strong aria-hidden="true">2.</strong> 验证系统</a></li><li><a href="002_post_an_article.html"><strong aria-hidden="true">3.</strong> 发布文章</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html"><strong aria-hidden="true">2.</strong> 验证系统</a></li><li><a href="002_post_an_article.html" class="active"><strong aria-hidden="true">3.</strong> 发布文章</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -140,62 +140,28 @@
 
                 <div id="content" class="content">
                     <main>
-                        <a class="header" href="#01_auth_system" id="01_auth_system"><h1>01_auth_system</h1></a>
-<a class="header" href="#request-table" id="request-table"><h2>Request Table</h2></a>
-<table><thead><tr><th> Type    </th><th> Code </th><th> Message                          </th></tr></thead><tbody>
-<tr><td> OK      </td><td> 000  </td><td> Created Token.                   </td></tr>
-<tr><td> ERROR   </td><td> 000  </td><td> No Public Key in Request Header. </td></tr>
-<tr><td> WARNING </td><td> 000  </td><td> Generating Token...              </td></tr>
-</tbody></table>
-<a class="header" href="#auth-system" id="auth-system"><h2>Auth System</h2></a>
-<pre><code class="language-sequence">title: Auth System
-Client --&gt;&gt; Server: public-key-header: pk
-Server --&gt;&gt; Client: token
-Client --&gt;  Server: headers: signed-token-header, public-key-header
-Server --&gt;  Client: saved {public_key: signed_token}
-Client -&gt;   Server: normal request
-</code></pre>
-<a class="header" href="#摘要" id="摘要"><h2>摘要</h2></a>
-<ol>
-<li>客户端的请求头中必须存在 <strong>公钥</strong>(ed25519)
-<ol>
-<li><code>public-key-header: your_public_key</code></li>
-<li>若没有公钥，则会 <strong>请求失败</strong>。</li>
-</ol>
-</li>
-<li>首次求请求后，服务器返回一个 token</li>
-<li>客户端使用 <strong>私钥</strong> 对 token 进行签名，将 <code>token</code> 与 签名后的 <code>signed_token</code> 加入请求头。
-<ol>
-<li><code>token-header: your_token</code></li>
-<li><code>signed-token-header: your_signed_token</code></li>
-</ol>
-</li>
-<li>以上流程(2 次请求)完成后，则可根据记录的身份任意请求。</li>
-</ol>
-<p>标准的 headers 如下：</p>
-<pre><code class="language-json">headers: { 
-    &quot;Accept&quot;: &quot;application/json, text/plain, */*&quot;,
-    &quot;public-key-header&quot;: &quot;py+qzXgPUdfNipn2QF+yGBDvRsMeLOeG95+K6zMIL/E=&quot;,
-    &quot;token-header&quot;: &quot;&quot;,
-    &quot;signed-token-header&quot;: &quot;&quot;,
-    &quot;User-Agent&quot;: &quot;axios/0.19.0&quot; 
-}
-</code></pre>
+                        <a class="header" href="#002_post_an_article" id="002_post_an_article"><h1>002_post_an_article</h1></a>
+<a class="header" href="#login" id="login"><h2>Login</h2></a>
+<p>关于用户名唯一性的探讨。</p>
+<p>lark-in 会自动为用户生成密钥对，这已经能够满足用户身份标识的唯一性，于此，是否有必要再为用户生成 <code>可读的</code> 唯一ID？</p>
+<p><strong>由于要为用户生成独立的个人博客，可读的个人 ID 是十分有必要的。</strong></p>
+<a class="header" href="#方案一" id="方案一"><h4>方案一</h4></a>
+<p>在初次登录时检测是否已存在重复 ID。</p>
+<a class="header" href="#方案二" id="方案二"><h4>方案二</h4></a>
+<p>在发布文章时，检测 ID 是否重复，如果重复，请求用户更换 ID。</p>
+<a class="header" href="#post" id="post"><h2>Post</h2></a>
+<p>发布成功后跳转到用户博客。</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
                         
-                            <a rel="prev" href="000_abstract.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="001_auth_system.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                         
 
-                        
-                            <a rel="next" href="002_post_an_article.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
                         
 
                         <div style="clear: both"></div>
@@ -205,15 +171,11 @@ Client -&gt;   Server: normal request
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
                 
-                    <a href="000_abstract.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a href="001_auth_system.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
-                
-                    <a href="002_post_an_article.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
                 
             </nav>
 

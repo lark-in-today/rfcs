@@ -11,7 +11,7 @@
 ## Auth System
 
 ```sequence
-title: Auth
+title: Auth System
 Client -->> Server: public-key-header: pk
 Server -->> Client: token
 Client -->  Server: headers: signed-token-header, public-key-header

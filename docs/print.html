@@ -75,7 +75,7 @@
         </script>
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
-            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html"><strong aria-hidden="true">2.</strong> 验证系统</a></li></ol>
+            <ol class="chapter"><li><a href="000_abstract.html"><strong aria-hidden="true">1.</strong> 摘要</a></li><li><a href="001_auth_system.html"><strong aria-hidden="true">2.</strong> 验证系统</a></li><li><a href="002_post_an_article.html"><strong aria-hidden="true">3.</strong> 发布文章</a></li></ol>
         </nav>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -224,7 +224,7 @@ const articleList = () =&gt; (
 <tr><td> WARNING </td><td> 000  </td><td> Generating Token...              </td></tr>
 </tbody></table>
 <a class="header" href="#auth-system" id="auth-system"><h2>Auth System</h2></a>
-<pre><code class="language-sequence">title: Auth
+<pre><code class="language-sequence">title: Auth System
 Client --&gt;&gt; Server: public-key-header: pk
 Server --&gt;&gt; Client: token
 Client --&gt;  Server: headers: signed-token-header, public-key-header
@@ -257,6 +257,17 @@ Client -&gt;   Server: normal request
     &quot;User-Agent&quot;: &quot;axios/0.19.0&quot; 
 }
 </code></pre>
+<a class="header" href="#002_post_an_article" id="002_post_an_article"><h1>002_post_an_article</h1></a>
+<a class="header" href="#login" id="login"><h2>Login</h2></a>
+<p>关于用户名唯一性的探讨。</p>
+<p>lark-in 会自动为用户生成密钥对，这已经能够满足用户身份标识的唯一性，于此，是否有必要再为用户生成 <code>可读的</code> 唯一ID？</p>
+<p><strong>由于要为用户生成独立的个人博客，可读的个人 ID 是十分有必要的。</strong></p>
+<a class="header" href="#方案一" id="方案一"><h4>方案一</h4></a>
+<p>在初次登录时检测是否已存在重复 ID。</p>
+<a class="header" href="#方案二" id="方案二"><h4>方案二</h4></a>
+<p>在发布文章时，检测 ID 是否重复，如果重复，请求用户更换 ID。</p>
+<a class="header" href="#post" id="post"><h2>Post</h2></a>
+<p>发布成功后跳转到用户博客。</p>
 
                     </main>
 
@@ -279,21 +290,6 @@ Client -&gt;   Server: normal request
 
         </div>
 
-        
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3001");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload(true); // force reload from server (not from cache)
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         
 
         
